@@ -1,2 +1,2 @@
 # quadtree
-QuadTree demonstration
+This project contains a simple quadtree implementation in Java and a Swing application that visually displays nodes and it's collisions in the tree. The project is free. I just ask you to give credit if you reproduce it.
