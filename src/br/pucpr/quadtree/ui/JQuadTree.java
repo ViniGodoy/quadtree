@@ -40,9 +40,7 @@ public class JQuadTree extends JComponent {
     }
 
     private void clearMarks() {
-        for (Circle c : quadTree.list()) {
-            c.clear();
-        }
+        quadTree.list().forEach(JQuadTree.Circle::clear);
         Circle.touchCount = 0;
         tested.clear();
         hit.clear();
@@ -57,9 +55,7 @@ public class JQuadTree extends JComponent {
             quadTree.debugFindCollisions(mouseBounds(evt), tested, hit);
         } else if (evt.getButton() == MouseEvent.BUTTON3) {
             Set<Circle> objects = quadTree.findCollisions(mouseBounds(evt));
-            for (Circle obj : objects) {
-                quadTree.remove(obj);
-            }
+            objects.forEach(quadTree::remove);
             clearMarks();
         }
 

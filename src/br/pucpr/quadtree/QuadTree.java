@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class QuadTree<T extends AxisAlignable> {
     public static final double MIN_SIZE = 15.0;
@@ -86,11 +87,10 @@ public class QuadTree<T extends AxisAlignable> {
 
             //If there are objects in this node, test if they colide.
             if (objects != null) {
-                for (T nodeObject : objects) {
-                    if (nodeObject.intersects(area)) {
-                        result.add(nodeObject);
-                    }
-                }
+                result.addAll(objects.stream()
+                        .filter(nodeObject -> nodeObject.intersects(area))
+                        .collect(Collectors.toList())
+                );
                 return;
             }
 
@@ -111,11 +111,10 @@ public class QuadTree<T extends AxisAlignable> {
 
             //If there are objects in this node, test if they colide.
             if (objects != null) {
-                for (T nodeObject : objects) {
-                    if (nodeObject.intersects(area)) {
-                        result.add(nodeObject);
-                    }
-                }
+                result.addAll(objects.stream()
+                        .filter(nodeObject -> nodeObject.intersects(area))
+                        .collect(Collectors.toList())
+                );
                 return;
             }
 
